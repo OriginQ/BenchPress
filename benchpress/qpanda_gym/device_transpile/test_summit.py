@@ -16,7 +16,7 @@ from benchpress.qpanda_gym.circuits import qpanda_bv_all_ones, qpanda_circSU2, t
 BACKEND = Configuration.backend()
 TWO_Q_GATE = BACKEND.two_q_gate_type
 OPTIMIZATION_LEVEL = Configuration.options["qpanda"]["optimization_level"]
-
+basic_gates = ['X1','RZ','CZ']
 
 @benchpress_test_validation
 class TestWorkoutDeviceTranspile100Q(WorkoutDeviceTranspile100Q):
@@ -35,7 +35,7 @@ class TestWorkoutDeviceTranspile100Q(WorkoutDeviceTranspile100Q):
 
         @benchmark
         def result():
-            aft_prog = pm.transpile(prog, topo, {}, optimization_level=OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
@@ -51,7 +51,7 @@ class TestWorkoutDeviceTranspile100Q(WorkoutDeviceTranspile100Q):
 
         @benchmark
         def result():
-            aft_prog = pm.transpile(prog, topo, {}, optimization_level=OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
@@ -67,7 +67,7 @@ class TestWorkoutDeviceTranspile100Q(WorkoutDeviceTranspile100Q):
         topo = BACKEND.configuration().coupling_map
         @benchmark
         def result():
-            aft_prog = pm.transpile(prog, topo, {}, optimization_level=OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
@@ -84,7 +84,7 @@ class TestWorkoutDeviceTranspile100Q(WorkoutDeviceTranspile100Q):
 
         @benchmark
         def result():
-            aft_prog = pm.transpile(prog, topo, {}, optimization_level=OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
@@ -101,7 +101,7 @@ class TestWorkoutDeviceTranspile100Q(WorkoutDeviceTranspile100Q):
 
         @benchmark
         def result():
-            aft_prog = pm.transpile(prog, topo, {}, optimization_level=OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
@@ -122,7 +122,7 @@ class TestWorkoutDeviceTranspile100Q(WorkoutDeviceTranspile100Q):
 
         @benchmark
         def result():
-            aft_prog = pm.transpile(prog, topo, {}, optimization_level=OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
@@ -142,7 +142,7 @@ class TestWorkoutDeviceTranspile100Q(WorkoutDeviceTranspile100Q):
 
         @benchmark
         def result():
-            aft_prog = pm.transpile(prog, topo, {}, optimization_level=OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
@@ -161,7 +161,7 @@ class TestWorkoutDeviceTranspile100Q(WorkoutDeviceTranspile100Q):
 
         @benchmark
         def result():
-            aft_prog = pm.transpile(prog, topo, {}, optimization_level=OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
@@ -181,7 +181,7 @@ class TestWorkoutDeviceTranspile100Q(WorkoutDeviceTranspile100Q):
 
         @benchmark
         def result():
-            aft_prog = pm.transpile(prog, topo, {}, optimization_level=OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)

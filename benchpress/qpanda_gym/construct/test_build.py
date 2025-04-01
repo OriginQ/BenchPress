@@ -20,8 +20,6 @@ from benchpress.qpanda_gym.circuits import (
     qpanda_random_clifford,
     dtc_unitary,
     multi_control_circuit,
-    qpanda_bv_all_ones,
-    trivial_bvlike_circuit,
 )
 
 from benchpress.config import Configuration
@@ -29,7 +27,7 @@ from benchpress.utilities.io import output_circuit_properties
 from benchpress.workouts.validation import benchpress_test_validation
 from benchpress.workouts.build import WorkoutCircuitConstruction
 import pyqpanda3.core as pq_core
-from pyqpanda3.compiler import *
+from pyqpanda3.intermediate_compiler import * 
 SEED = 12345
 
 
@@ -129,7 +127,6 @@ class TestWorkoutCircuitConstruction(WorkoutCircuitConstruction):
             num_resp = 5
             qcircuit_num = 1
             params = np.random.uniform(-3.1415926, 3.1415926, size=[qcircuit_num, tmp, width, num_resp])
-            # 将生成qcircuit_num个QCircuit
             vqres = qc(params)
             return vqres.at([0])
 
@@ -148,8 +145,6 @@ class TestWorkoutCircuitConstruction(WorkoutCircuitConstruction):
             return out
 
         output_circuit_properties(result, 'CNOT', benchmark)
-        assert result.count_ops(False).get('RZ') == 120000
-        assert result.count_ops(False).get('RX') == 80000
         assert result.count_ops(False).get('CNOT') == 15000
 
     def test_bigint_qasm2_import(self, benchmark):

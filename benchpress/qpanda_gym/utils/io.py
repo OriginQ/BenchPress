@@ -13,7 +13,7 @@ import os
 from qiskit import QuantumCircuit, qasm2
 from qiskit.circuit.library import PauliEvolutionGate
 from time import perf_counter
-from pyqpanda3.compiler import *
+from pyqpanda3.intermediate_compiler import *
 
 def qpanda_qasm_loader(qasm_file, benchmark):
     start = perf_counter()

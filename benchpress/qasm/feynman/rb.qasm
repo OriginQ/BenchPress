@@ -14,3 +14,4 @@ s q[0];
 z q[0];
 h q[0];
 barrier q;
+measure q -> c;

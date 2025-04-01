@@ -9,6 +9,7 @@ from benchpress.workouts.manipulate import WorkoutCircuitManipulate
 import pyqpanda3.transpilation as pq
 from pyqpanda3.core import *
 
+basic_gates = ['X1','RZ','CZ']
 @benchpress_test_validation
 class TestWorkoutCircuitManipulate(WorkoutCircuitManipulate):
     def test_DTC100_twirling(self, benchmark):
@@ -44,7 +45,7 @@ class TestWorkoutCircuitManipulate(WorkoutCircuitManipulate):
         @benchmark
         def result():
             # translate.property_set = PropertySet()
-            out = pq.decompose(circ)
+            out = pq.decompose(circ,basic_gates)
             return out
 
         benchmark.extra_info["gate_count_2q"] = result.count_ops(True).get("CZ", 0)
@@ -60,7 +61,7 @@ class TestWorkoutCircuitManipulate(WorkoutCircuitManipulate):
 
         @benchmark
         def result():
-            out = pq.decompose(circ)
+            out = pq.decompose(circ,basic_gates)
             return out
 
         benchmark.extra_info["gate_count_2q"] = result.count_ops(True).get("CZ", 0)
@@ -77,7 +78,7 @@ class TestWorkoutCircuitManipulate(WorkoutCircuitManipulate):
 
         @benchmark
         def result():
-            out = pq.decompose(cliff_circ)
+            out = pq.decompose(cliff_circ,basic_gates)
             return out
 
         benchmark.extra_info["gate_count_2q"] = result.count_ops(True).get("CZ", 0)

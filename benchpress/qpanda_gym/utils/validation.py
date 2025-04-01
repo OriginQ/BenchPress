@@ -10,7 +10,7 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 """Basic circuit validation"""
-
+import pyqpanda3 as pq3
 
 def qpanda_circuit_validation(circuit, backend):
     """Validate that input circuit matches gate set
@@ -31,6 +31,7 @@ def qpanda_circuit_validation(circuit, backend):
 
         arch_map[u].append(v)
         arch_map[v].append(u)
+    #return pq3.transpilation.check_mapping(ops,arch_map)
     for op in ops:
         qubits = op.qubits()
         if len(qubits) > 1:

@@ -28,7 +28,7 @@ from benchpress.workouts.abstract_transpile.hamlib_hamiltonians import (
 )
 
 OPTIMIZATION_LEVEL = Configuration.options["qpanda"]["optimization_level"]
-
+basic_gates = ['X1','RZ','CZ']
 
 @benchpress_test_validation
 class TestWorkoutAbstractHamiltonians(WorkoutAbstractHamiltonians):
@@ -41,12 +41,9 @@ class TestWorkoutAbstractHamiltonians(WorkoutAbstractHamiltonians):
         backend = FlexibleBackend(len(prog.qubits()), layout=circ_and_topo[1])
         topo = backend.configuration().coupling_map
         pm = Transpiler()
-
         @benchmark
         def result():
-            print("transpile begin")
-            atf_prog = pm.transpile(prog, topo,  optimization_level=OPTIMIZATION_LEVEL)
-            print("transpile end")
+            atf_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL, basic_gates)
             return atf_prog
 
 

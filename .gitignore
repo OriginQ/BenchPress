@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+.vs/*
 # C extensions
 *.so
 
@@ -129,4 +129,3 @@ dmypy.json
 .pymon
 .DS_Store
 .benchmarks
-/.vs

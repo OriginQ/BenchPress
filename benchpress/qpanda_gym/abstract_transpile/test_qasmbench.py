@@ -37,6 +37,7 @@ OPTIMIZATION_LEVEL = Configuration.options["qiskit"]["optimization_level"]
 # that they have been altered from the originals.
 """Test qasmbench against abstract backend topologies"""
 import pytest
+from pyqpanda3.core import QProg
 from pyqpanda3.transpilation import *
 from benchpress.utilities.io import qasm_circuit_loader, output_circuit_properties
 from benchpress.utilities.validation import circuit_validator
@@ -50,7 +51,7 @@ from benchpress.workouts.abstract_transpile import (
 )
 
 OPTIMIZATION_LEVEL = Configuration.options["qpanda"]["optimization_level"]
-
+basic_gates = ['X1','RZ','CZ']
 
 @benchpress_test_validation
 class TestWorkoutAbstractQasmBenchSmall(WorkoutAbstractQasmBenchSmall):
@@ -64,7 +65,7 @@ class TestWorkoutAbstractQasmBenchSmall(WorkoutAbstractQasmBenchSmall):
         @benchmark
         def result():
             # Need to make a copy as the compilation is done in-place
-            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
@@ -83,7 +84,7 @@ class TestWorkoutAbstractQasmBenchMedium(WorkoutAbstractQasmBenchMedium):
         @benchmark
         def result():
             # Need to make a copy as the compilation is done in-place
-            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL,basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
@@ -102,7 +103,7 @@ class TestWorkoutAbstractQasmBenchLarge(WorkoutAbstractQasmBenchLarge):
         @benchmark
         def result():
             # Need to make a copy as the compilation is done in-place
-            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL)
+            aft_prog = pm.transpile(prog, topo, {}, OPTIMIZATION_LEVEL, basic_gates)
             return aft_prog
 
         output_circuit_properties(result, '2Q_GATE', benchmark)
